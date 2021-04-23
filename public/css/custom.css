@@ -1,0 +1,86 @@
+.nav-main {
+    border-bottom: 1px solid #10bef2;
+}
+
+.main-logo img {
+    width: 100%;
+    max-width: 200px;
+}
+
+#translateForm {
+    margin-top: 10%;
+    padding: 15px;
+    box-shadow: 5px 5px 11px rgb(0 0 0 / 15%);
+    border-radius: 10px;
+}
+
+#tagcloud {
+    margin: 5% auto;
+}
+
+#tagcloud li a {
+    cursor: pointer;
+    color: #04bdf2;
+}
+
+#tagcloud li {
+    font-size: 12px;
+}
+
+.tagcloud-bl h3 {
+    text-align: center;
+    margin-block: 20px;
+    font-weight: 100;
+    color: #04bdf2;
+    border-bottom: 1px solid #04bdf2;
+    padding-bottom: 10px;
+    width: 100%;
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+.btn-translate {
+    margin-top: 30px;
+    width: 100%;
+    max-width: 150px;
+    background: linear-gradient(#04bdf2, #9198e5);
+    color: #fff;
+}
+
+.footer {
+    margin-top: 5%;
+    background-image: url(../img/bg_grey.png);
+    padding: 35px 0 1px;
+}
+
+.logo-footer {
+    width: 100%;
+    max-width: 200px;
+}
+
+.title-footer {
+    color: #c5c1c1;
+    font-size: 1rem;
+}
+
+.footer-links {
+    /*padding-left: 0px;*/
+    list-style: circle;
+}
+
+.footer-links li a {
+    color: #868686;
+    font-size: 12px;
+}
+
+::marker {
+    color: #868686;
+}
+
+.created-bl {
+    text-align: center;
+    color: #fff;
+    border-top: 1px solid #636363;
+    padding-top: 10px;
+    font-size: 10px;
+}
