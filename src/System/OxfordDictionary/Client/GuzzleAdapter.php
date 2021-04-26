@@ -11,23 +11,18 @@ use GuzzleHttp\Exception\GuzzleException;
  */
 class GuzzleAdapter implements HttpClientInterface
 {
+    /**
+     * @var Client
+     */
     private Client $client;
 
+    /**
+     * GuzzleAdapter constructor.
+     */
     public function __construct()
     {
         $this->client = new Client();
     }
-
-//    /**
-//     * @param Client $client
-//     * @return $this
-//     */
-//    public function setClient(Client $client)
-//    {
-//        $this->client = $client;
-//
-//        return $this;
-//    }
 
     /**
      * @inheritDoc

@@ -22,7 +22,7 @@ class GuzzleAdapterTest extends TestCase
      * @param  array  $data
      * @throws ReflectionException
      */
-    public function we_can_make_request($method, array $data)
+    public function weCanMakeRequestTest($method, array $data)
     {
         $client = new GuzzleAdapter();
 
