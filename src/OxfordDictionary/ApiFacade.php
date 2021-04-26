@@ -10,7 +10,7 @@ class ApiFacade
     /**
      * @var HttpClientInterface
      */
-    private $client;
+    private HttpClientInterface $client;
 
     public function __construct(HttpClientInterface $client)
     {
