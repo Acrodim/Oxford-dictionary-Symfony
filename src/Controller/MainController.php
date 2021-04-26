@@ -10,11 +10,20 @@ namespace App\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 
 class MainController extends AbstractController
 {
 
     public function index()
+    {
+        return $this->render('pages/index.html.twig');
+    }
+
+    /**
+     * @return Response
+     */
+    public function getWords()
     {
         $cloudWords = [
             'Awesome',
@@ -69,8 +78,9 @@ class MainController extends AbstractController
             'Light',
         ];
 
-        return $this->render('pages/index.html.twig', [
-            'cloudWords' => $cloudWords
-        ]);
+        $response = new Response(json_encode($cloudWords));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
     }
 }
