@@ -1,3 +1,7 @@
 index:
     path: /
     controller: App\Controller\MainController::index
+
+get-words:
+    path: /get-words
+    controller: App\Controller\MainController::getWords

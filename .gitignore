@@ -6,7 +6,6 @@
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /public/build/
-/node_modules/
 /var/
 /vendor/
 .idea
@@ -18,3 +17,10 @@
 .phpunit.result.cache
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
+
+###> symfony/webpack-encore-bundle ###
+/node_modules/
+/public/build/
+npm-debug.log
+yarn-error.log
+###< symfony/webpack-encore-bundle ###

@@ -1,8 +1,7 @@
 <div id="tagcloud">
-    <ul>
-        {% for word in cloudWords %}
-            <li><a href="#">{{ word }}</a></li>
-        {% endfor %}
-    </ul>
+    <div id="loading-api">
+        <img src="{{ asset('img/loading.gif') }}" alt="api loading">
+        <span>Loading...</span>
+    </div>
 </div>
 <h3>Our popular words</h3>
