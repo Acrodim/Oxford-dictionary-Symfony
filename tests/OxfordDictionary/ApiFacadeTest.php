@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests;
+namespace App\Tests\OxfordDictionary;
 
 use App\Service\OxfordDictionary\ApiFacade;
 use App\Service\OxfordDictionary\Clients\HttpClientInterface;
