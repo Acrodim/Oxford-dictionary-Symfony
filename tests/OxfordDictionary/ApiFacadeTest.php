@@ -12,7 +12,7 @@ class ApiFacadeTest extends TestCase
     /**
      * @test
      */
-    public function throw_valid_exception()
+    public function throwValidExceptionTest()
     {
         $client = $this->createMock(HttpClientInterface::class);
 
