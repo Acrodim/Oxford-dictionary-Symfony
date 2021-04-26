@@ -4,6 +4,8 @@
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
+/public/build/
+/node_modules/
 /var/
 /vendor/
 .idea
