@@ -1,8 +1,8 @@
 <?php
 
-namespace App\System\OxfordDictionary\Client;
+namespace App\Service\OxfordDictionary\Client;
 
-use App\System\OxfordDictionary\Exceptions\ApiHttpClientException;
+use App\Service\OxfordDictionary\Exceptions\ApiHttpClientException;
 
 interface HttpClientInterface
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\System\OxfordDictionary\Exceptions;
+namespace App\Service\OxfordDictionary\Exceptions;
 
 class ApiException extends \RuntimeException
 {

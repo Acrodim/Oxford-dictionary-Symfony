@@ -2,8 +2,8 @@
 
 namespace App\Tests\OxfordDictionary;
 
-use App\System\OxfordDictionary\Client\GuzzleAdapter;
-use App\System\OxfordDictionary\Exceptions\ApiException;
+use App\Service\OxfordDictionary\Client\GuzzleAdapter;
+use App\Service\OxfordDictionary\Exceptions\ApiException;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use PHPUnit\Framework\TestCase;
@@ -76,7 +76,7 @@ class GuzzleAdapterTest extends TestCase
      * @param $expected
      * @throws ReflectionException
      */
-    public function we_can_handle_exception($method, array $data, $expected)
+    public function weCanHandleException($method, array $data, $expected)
     {
         $client = new GuzzleAdapter();
 
