@@ -1,8 +1,8 @@
 <?php
 
-namespace App\OxfordDictionary;
+namespace App\Service\OxfordDictionary;
 
-use App\OxfordDictionary\Clients\HttpClientInterface;
+use App\Service\OxfordDictionary\Clients\HttpClientInterface;
 
 class ApiFacade
 {

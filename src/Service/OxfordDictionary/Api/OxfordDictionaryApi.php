@@ -1,21 +1,21 @@
 <?php
 
 
-namespace App\OxfordDictionary\Api;
+namespace App\Service\OxfordDictionary\Api;
 
 
-use App\OxfordDictionary\Clients\HttpClientInterface;
+use App\Service\OxfordDictionary\Clients\HttpClientInterface;
 
 class OxfordDictionaryApi
 {
     /**
-     * @var \App\OxfordDictionary\Clients\HttpClientInterface
+     * @var \App\Service\OxfordDictionary\Clients\HttpClientInterface
      */
     private $client;
 
     /**
      * OxfordDictionaryApi constructor.
-     * @param \App\OxfordDictionary\Clients\HttpClientInterface $client
+     * @param \App\Service\OxfordDictionary\Clients\HttpClientInterface $client
      */
     public function __construct(HttpClientInterface $client)
     {
