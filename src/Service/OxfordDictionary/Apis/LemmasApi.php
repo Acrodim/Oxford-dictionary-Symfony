@@ -1,0 +1,46 @@
+<?php
+
+namespace App\Service\OxfordDictionary\Apis;
+
+
+use App\Service\OxfordDictionary\Builders\LexicalEntries\GetResultsBuilder;
+use App\Service\OxfordDictionary\Client\HttpClientInterface;
+
+class LemmasApi
+{
+    /**
+     * @var HttpClientInterface
+     */
+    private  HttpClientInterface $client;
+
+
+    /**
+     * LemmasApi constructor.
+     * @param HttpClientInterface $client
+     */
+    public function __construct(HttpClientInterface  $client)
+    {
+        $this->client = $client;
+    }
+
+
+    /**
+     * @param $source_lang
+     * @param $word_id
+     * @return array
+     */
+    public function get($source_lang, $word_id): array
+    {
+        $uri = sprintf(
+            '/lemmas/%s/%s',
+            $source_lang,
+            $word_id
+        );
+
+        $response = $this->client->get($uri);
+
+        $resultBuilder  = new GetResultsBuilder($response);
+
+        return $resultBuilder->build();
+    }
+}
