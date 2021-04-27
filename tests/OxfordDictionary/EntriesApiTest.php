@@ -1,9 +1,6 @@
 <?php
 
-
 namespace tests\OxfordDictionary;
-
-
 
 use App\Service\OxfordDictionary\Clients\HttpClientInterface;
 use App\Service\OxfordDictionary\Exceptions\ApiException;
@@ -721,7 +718,6 @@ class EntriesApiTest extends TestCase
     /**
      * @test
      */
-
     public function we_can_perform_a_entries()
     {
         $client = $this->createMock(HttpClientInterface::class);
@@ -738,7 +734,6 @@ class EntriesApiTest extends TestCase
     /**
      * @test
      */
-
     public function we_can_not_found_a_entries()
     {
         $client = $this->createMock(HttpClientInterface::class);
@@ -761,5 +756,4 @@ class EntriesApiTest extends TestCase
         $this->expectException(ApiException::class);
         $api->get('bad_request', 'bad_request');
     }
-
 }

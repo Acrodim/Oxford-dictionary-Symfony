@@ -1,12 +1,10 @@
 <?php
 
-
 namespace App\Service\OxfordDictionary\Apis;
 
 use App\Service\OxfordDictionary\Builders\EntriesResultBuilder;
 use App\Service\OxfordDictionary\Clients\HttpClientInterface;
 use App\Service\OxfordDictionary\Exceptions\ApiException;
-
 
 class EntriesApi
 {
@@ -16,7 +14,6 @@ class EntriesApi
      * EntriesApi constructor.
      * @param HttpClientInterface $client
      */
-
     public function __construct(HttpClientInterface $client)
     {
         $this->client = $client;
@@ -28,13 +25,14 @@ class EntriesApi
      * @return array
      * @throws ApiException
      */
-
     public function get(string $source_lang, string $word_id): array
     {
         $uri = sprintf(
             'entries/%s/%s?strictMatch=false',
             $source_lang, $word_id
         );
+
         return  (new EntriesResultBuilder($this->client->get($uri)))->build();
     }
 }
+

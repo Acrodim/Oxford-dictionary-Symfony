@@ -1,6 +1,5 @@
 <?php
 
-
 namespace App\Service\OxfordDictionary\Builders;
 
 use App\Service\OxfordDictionary\Exceptions\ApiBuilderException;
@@ -21,6 +20,9 @@ class EntriesResultBuilder
         $this->response = $response;
     }
 
+    /**
+     * @return array
+     */
     public function build(): array
     {
         $results = [];
@@ -37,6 +39,8 @@ class EntriesResultBuilder
         } else {
             $results = $this->response;
         }
+
         return $results;
     }
 }
+

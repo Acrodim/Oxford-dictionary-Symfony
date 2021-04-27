@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Service\OxfordDictionary\Models\Entries;
-
 
 use Spatie\DataTransferObject\FlexibleDataTransferObject;
 use Symfony\Component\PropertyAccess\PropertyAccess;
@@ -18,6 +16,10 @@ class Sense extends FlexibleDataTransferObject
     /** @var array */
     public $examples;
 
+    /**
+     * Sense constructor.
+     * @param array $data
+     */
     public function __construct(array $data)
     {
         $propertyAccessor = PropertyAccess::createPropertyAccessor();
