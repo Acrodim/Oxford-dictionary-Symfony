@@ -1,7 +1,7 @@
 <?php
 
 
-namespace tests;
+namespace tests\OxfordDictionary;
 
 
 
