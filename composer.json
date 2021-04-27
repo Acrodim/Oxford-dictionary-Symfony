@@ -17,6 +17,7 @@
         "phpdocumentor/reflection-docblock": "^5.2",
         "phpunit/phpunit": "^9.5",
         "sensio/framework-extra-bundle": "^5.1",
+        "spatie/data-transfer-object": "^2.8",
         "symfony/asset": "5.2.*",
         "symfony/console": "5.2.*",
         "symfony/dotenv": "5.2.*",
@@ -54,7 +55,8 @@
         "symfony/phpunit-bridge": "^5.2",
         "symfony/stopwatch": "^5.2",
         "symfony/var-dumper": "^5.2",
-        "symfony/web-profiler-bundle": "^5.2"
+        "symfony/web-profiler-bundle": "^5.2",
+        "phpunit/phpunit": "^9.5"
     },
     "config": {
         "optimize-autoloader": true,
