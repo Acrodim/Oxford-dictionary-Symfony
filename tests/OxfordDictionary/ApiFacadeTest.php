@@ -2,8 +2,8 @@
 
 namespace App\Tests\OxfordDictionary;
 
-use App\System\OxfordDictionary\ApiFacade;
-use App\System\OxfordDictionary\Client\HttpClientInterface;
+use App\Service\OxfordDictionary\ApiFacade;
+use App\Service\OxfordDictionary\Client\HttpClientInterface;
 use PHPUnit\Framework\TestCase;
 
 class ApiFacadeTest extends TestCase
