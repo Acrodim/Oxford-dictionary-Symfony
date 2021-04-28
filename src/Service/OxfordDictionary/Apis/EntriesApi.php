@@ -3,7 +3,7 @@
 namespace App\Service\OxfordDictionary\Apis;
 
 use App\Service\OxfordDictionary\Builders\EntriesResultBuilder;
-use App\Service\OxfordDictionary\Clients\HttpClientInterface;
+use App\Service\OxfordDictionary\Client\HttpClientInterface;
 use App\Service\OxfordDictionary\Exceptions\ApiException;
 
 class EntriesApi
