@@ -10,7 +10,6 @@
 /vendor/
 .idea
 .DS_Store
-
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###
