@@ -1,7 +1,11 @@
 index:
-    path: /
-    controller: App\Controller\MainController::index
+  path: /
+  controller: App\Controller\MainController::index
 
 get-words:
-    path: /get-words
-    controller: App\Controller\MainController::getWords
+  path: /get-words
+  controller: App\Controller\MainController::getWords
+
+search:
+  path: /search
+  controller: App\Controller\MainController::search

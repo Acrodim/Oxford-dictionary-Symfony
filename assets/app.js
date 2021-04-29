@@ -28,8 +28,17 @@ $(document).ready(function(){
                     // hide loading animation
                     loadingApi.hide('slow');
 
+                    // convert respons to obj
+                    let obj = response.data.reduce(function(accum, currentVal) {
+                        accum[currentVal.id] = currentVal.word;
+                        return accum;
+                    }, {});
+
+                    // obj to arr
+                    let result = Object.values(obj);
+
                     // init cloud
-                    tagCloud('#tagcloud', response.data, {
+                    tagCloud('#tagcloud', result, {
                         // radius in px
                         radius: 200,
 
