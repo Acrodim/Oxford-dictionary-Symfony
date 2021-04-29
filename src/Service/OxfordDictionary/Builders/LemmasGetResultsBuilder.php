@@ -2,12 +2,10 @@
 
 namespace App\Service\OxfordDictionary\Builders;
 
-
 use App\Service\OxfordDictionary\Models\LexicalEntries\LexicalEntry;
 
 class LemmasGetResultsBuilder
 {
-
 
     /**
      * @var array
@@ -41,7 +39,7 @@ class LemmasGetResultsBuilder
 
             $results[] = new LexicalEntry([
 
-                'id'=>$this->response['results'][0]['id'],
+                'id'=>$entry['inflectionOf'][0]['id'],
                 'language'=>$entry['language'],
                 'inflectionOf' => $entry['inflectionOf'][0]['text'],
                 'lexicalCategory' => $entry['lexicalCategory']['text'],
@@ -52,4 +50,5 @@ class LemmasGetResultsBuilder
 
         return $results;
     }
+
 }

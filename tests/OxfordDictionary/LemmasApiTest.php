@@ -86,4 +86,5 @@ class LemmasApiTest extends TestCase
         $results = $api->get('en', 'acesааа');
         $this->assertIsArray($results);
     }
+
 }

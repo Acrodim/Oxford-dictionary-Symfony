@@ -2,8 +2,6 @@
 
 namespace App\Service\OxfordDictionary\Apis;
 
-
-
 use App\Service\OxfordDictionary\Builders\LemmasGetResultsBuilder;
 use App\Service\OxfordDictionary\Client\HttpClientInterface;
 
@@ -44,4 +42,5 @@ class LemmasApi
 
         return $resultBuilder->build();
     }
+
 }
