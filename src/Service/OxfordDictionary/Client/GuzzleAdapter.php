@@ -16,6 +16,12 @@ class GuzzleAdapter implements HttpClientInterface
      */
     private Client $client;
 
+    /**
+     * GuzzleAdapter constructor.
+     * @param string $baseUri
+     * @param string $appId
+     * @param string $appKey
+     */
     public function __construct(string $baseUri, string $appId, string $appKey)
     {
         $this->client = new Client([
