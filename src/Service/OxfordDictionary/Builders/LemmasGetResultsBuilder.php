@@ -7,6 +7,7 @@ use App\Service\OxfordDictionary\Models\LexicalEntries\LexicalEntry;
 use Spatie\DataTransferObject\DataTransferObjectError;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
+
 class LemmasGetResultsBuilder
 {
     private array $response;
@@ -25,6 +26,7 @@ class LemmasGetResultsBuilder
      */
     public function build(): array
     {
+
         $results = [];
 
         if (key_exists('error', $this->response)) {
@@ -40,8 +42,8 @@ class LemmasGetResultsBuilder
 
                 $results[] = new LexicalEntry([
 
-                    'id' => $pa->getValue($this->response, '[results][0][id]'),
-                    'language' => $pa->getValue($entry, '[language]'),
+                    'id'=>$pa->getValue($this->response, '[results][0][id]'),
+                    'language'=>$pa->getValue($entry, '[language]'),
                     'inflectionOf' => $pa->getValue($entry, '[inflectionOf][0][text]'),
                     'lexicalCategory' => $pa->getValue($entry, '[lexicalCategory][text]')
 
@@ -53,5 +55,5 @@ class LemmasGetResultsBuilder
 
         return $results;
     }
-}
 
+}
