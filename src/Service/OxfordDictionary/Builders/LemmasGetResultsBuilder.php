@@ -2,16 +2,15 @@
 
 namespace App\Service\OxfordDictionary\Builders;
 
+use App\Service\OxfordDictionary\Exceptions\ApiBuilderException;
 use App\Service\OxfordDictionary\Models\LexicalEntries\LexicalEntry;
+use Spatie\DataTransferObject\DataTransferObjectError;
+use Symfony\Component\PropertyAccess\PropertyAccess;
+
 
 class LemmasGetResultsBuilder
 {
-
-    /**
-     * @var array
-     */
     private array $response;
-
 
     /**
      * LemmasGetResultsBuilder constructor.
@@ -21,7 +20,6 @@ class LemmasGetResultsBuilder
     {
         $this->response = $response;
     }
-
 
     /**
      * @return array
@@ -35,17 +33,24 @@ class LemmasGetResultsBuilder
             return $results;
         }
 
-        foreach ($this->response['results'][0]['lexicalEntries'] as $entry) {
+        $pa = PropertyAccess::createPropertyAccessor();
 
-            $results[] = new LexicalEntry([
+        try {
+            $entries = $pa->getValue($this->response, '[results][0][lexicalEntries]');
 
-                'id'=>$entry['inflectionOf'][0]['id'],
-                'language'=>$entry['language'],
-                'inflectionOf' => $entry['inflectionOf'][0]['text'],
-                'lexicalCategory' => $entry['lexicalCategory']['text'],
+            foreach ($entries as $entry) {
 
-            ]);
+                $results[] = new LexicalEntry([
 
+                    'id'=>$pa->getValue($this->response, '[results][0][id]'),
+                    'language'=>$pa->getValue($entry, '[language]'),
+                    'inflectionOf' => $pa->getValue($entry, '[inflectionOf][0][text]'),
+                    'lexicalCategory' => $pa->getValue($entry, '[lexicalCategory][text]')
+
+                ]);
+            }
+        } catch (DataTransferObjectError $e) {
+            throw new ApiBuilderException('Wrong API response.');
         }
 
         return $results;

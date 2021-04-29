@@ -7,11 +7,7 @@ use App\Service\OxfordDictionary\Client\HttpClientInterface;
 
 class LemmasApi
 {
-    /**
-     * @var HttpClientInterface
-     */
     private  HttpClientInterface $client;
-
 
     /**
      * LemmasApi constructor.
@@ -21,7 +17,6 @@ class LemmasApi
     {
         $this->client = $client;
     }
-
 
     /**
      * @param $source_lang
