@@ -40,8 +40,8 @@ class LemmasGetResultsBuilder
 
                 $results[] = new LexicalEntry([
 
-                    'id'=>$pa->getValue($this->response, '[results][0][id]'),
-                    'language'=>$pa->getValue($entry, '[language]'),
+                    'id' => $pa->getValue($this->response, '[results][0][id]'),
+                    'language' => $pa->getValue($entry, '[language]'),
                     'inflectionOf' => $pa->getValue($entry, '[inflectionOf][0][text]'),
                     'lexicalCategory' => $pa->getValue($entry, '[lexicalCategory][text]')
 
