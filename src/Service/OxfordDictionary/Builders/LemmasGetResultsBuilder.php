@@ -7,7 +7,6 @@ use App\Service\OxfordDictionary\Models\LexicalEntries\LexicalEntry;
 use Spatie\DataTransferObject\DataTransferObjectError;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
-
 class LemmasGetResultsBuilder
 {
     private array $response;
@@ -26,7 +25,6 @@ class LemmasGetResultsBuilder
      */
     public function build(): array
     {
-
         $results = [];
 
         if (key_exists('error', $this->response)) {
@@ -55,5 +53,5 @@ class LemmasGetResultsBuilder
 
         return $results;
     }
-
 }
+

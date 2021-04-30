@@ -37,5 +37,5 @@ class LemmasApi
 
         return $resultBuilder->build();
     }
-
 }
+

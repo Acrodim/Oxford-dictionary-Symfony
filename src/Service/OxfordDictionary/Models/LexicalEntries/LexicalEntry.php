@@ -6,7 +6,6 @@ use Spatie\DataTransferObject\FlexibleDataTransferObject;
 
 class LexicalEntry extends FlexibleDataTransferObject
 {
-
     public string $id;
 
     public string $inflectionOf;
@@ -14,5 +13,5 @@ class LexicalEntry extends FlexibleDataTransferObject
     public string $language;
 
     public string $lexicalCategory;
-
 }
+

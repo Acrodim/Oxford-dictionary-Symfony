@@ -2,7 +2,6 @@
 
 namespace App\Tests\OxfordDictionary;
 
-
 use App\Service\OxfordDictionary\Apis\LemmasApi;
 use App\Service\OxfordDictionary\Client\HttpClientInterface;
 use App\Service\OxfordDictionary\Exceptions\ApiException;
@@ -100,5 +99,5 @@ class LemmasApiTest extends TestCase
         $this->expectException(ApiException::class);
         $api->get('en', 'test');
     }
-
 }
+
