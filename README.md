@@ -3,6 +3,8 @@
 * `cd` into repository folder
 * Execute in terminal `composer update`
 * Execute in terminal `npm install`
+* Run migrations `php bin/console doctrine:migrations:migrate`
+* Run fixtures `php bin/console doctrine:fixtures:load`
 
 
 ### How to Use webpack (css and js)
@@ -13,3 +15,5 @@
 #### If you need change style or js
 * scss file in `/assets/styles/app.scss` 
 * JS file in `/assets/app.js` 
+
+

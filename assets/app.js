@@ -23,6 +23,7 @@ $(document).ready(function(){
      const result = () => {
         axios.get('/get-words')
             .then(function (response) {
+
                 if (response.data.length > 0) {
 
                     // hide loading animation
@@ -65,7 +66,7 @@ $(document).ready(function(){
             });
     }
 
-    setTimeout(result, 2500);
+    result();
 
     // a search page opens after clicking on links our cloud words
     let rootEl = document.querySelector('#tagcloud');
