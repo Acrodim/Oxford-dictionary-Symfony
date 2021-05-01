@@ -19,11 +19,11 @@ class LemmasApi
     }
 
     /**
-     * @param $source_lang
-     * @param $word_id
+     * @param string $word_id
+     * @param string $source_lang
      * @return array
      */
-    public function get($source_lang, $word_id): array
+    public function get(string $word_id, string $source_lang = "en"): array
     {
         $uri = sprintf(
             '/lemmas/%s/%s',
