@@ -39,3 +39,4 @@ services:
     App\Service\OxfordDictionary\Client\HttpClientInterface:
         class: 'App\Service\OxfordDictionary\Client\GuzzleAdapter'
         arguments: ['%base_uri%', '%app_id%', '%app_key%']
+

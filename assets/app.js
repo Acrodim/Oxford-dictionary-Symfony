@@ -23,13 +23,23 @@ $(document).ready(function(){
      const result = () => {
         axios.get('/get-words')
             .then(function (response) {
+
                 if (response.data.length > 0) {
 
                     // hide loading animation
                     loadingApi.hide('slow');
 
+                    // convert respons to obj
+                    let obj = response.data.reduce(function(accum, currentVal) {
+                        accum[currentVal.id] = currentVal.word;
+                        return accum;
+                    }, {});
+
+                    // obj to arr
+                    let result = Object.values(obj);
+
                     // init cloud
-                    tagCloud('#tagcloud', response.data, {
+                    tagCloud('#tagcloud', result, {
                         // radius in px
                         radius: 200,
 
@@ -56,7 +66,7 @@ $(document).ready(function(){
             });
     }
 
-    setTimeout(result, 2500);
+    result();
 
     // a search page opens after clicking on links our cloud words
     let rootEl = document.querySelector('#tagcloud');
