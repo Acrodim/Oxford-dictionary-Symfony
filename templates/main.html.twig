@@ -16,8 +16,9 @@
 <body>
     <div class="container">
         {% include('components/nav.html.twig') %}
-        {% block body %}{% endblock %}
     </div>
+    {% block body %}{% endblock %}
+
     {% include('components/footer.html.twig') %}
 
     {% block javascripts %}

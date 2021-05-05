@@ -1,27 +1,29 @@
 {% extends 'main.html.twig' %}
 
 {% block body %}
-    <form action="" method="post" id="translateForm">
-        <div class="row">
+    <div class="container">
+        <form action="" method="post" id="translateForm">
+            <div class="row">
 
-            <div class="col">
-                <label for="inputWord">Word id</label>
-                <input id="inputWord" type="text" class="form-control" placeholder="Type your word...">
+                <div class="col">
+                    <label for="inputWord">Word id</label>
+                    <input id="inputWord" type="text" class="form-control" placeholder="Type your word...">
+                </div>
+                <div class="col-md-2">
+                    <label for="translateLang">Language</label>
+                    <select id="translateLang" class="form-control">
+                        <option selected value="en" >En</option>
+                        <option value="ru" >Ru</option>
+                    </select>
+                </div>
+                <div class="col-2">
+                    <button type="submit" class="btn btn-translate">Translate</button>
+                </div>
             </div>
-            <div class="col-md-2">
-                <label for="translateLang">Language</label>
-                <select id="translateLang" class="form-control">
-                    <option selected value="en" >En</option>
-                    <option value="ru" >Ru</option>
-                </select>
-            </div>
-            <div class="col-2">
-                <button type="submit" class="btn btn-translate">Translate</button>
-            </div>
+        </form>
+
+        <div class="tagcloud-bl">
+            {% include('components/tag-cloud.html.twig') %}
         </div>
-    </form>
-
-    <div class="tagcloud-bl">
-        {% include('components/tag-cloud.html.twig') %}
     </div>
 {% endblock %}
