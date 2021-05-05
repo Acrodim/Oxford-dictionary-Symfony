@@ -15,8 +15,6 @@ class CachingDecorator implements HttpClientInterface
     {
         $this->client = $client;
         $this->em = $em;
-
-        dd("test");
     }
 
     /**
