@@ -40,3 +40,8 @@ services:
         class: 'App\Service\OxfordDictionary\Client\GuzzleAdapter'
         arguments: ['%base_uri%', '%app_id%', '%app_key%']
 
+    App\Service\OxfordDictionary\Decorator\CachingDecorator:
+        decorates: 'App\Service\OxfordDictionary\Client\HttpClientInterface'
+        arguments:
+            - '@.inner'
+            - '@doctrine.orm.entity_manager'
