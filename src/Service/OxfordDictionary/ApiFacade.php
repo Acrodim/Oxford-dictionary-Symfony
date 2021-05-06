@@ -2,14 +2,14 @@
 
 namespace App\Service\OxfordDictionary;
 
+use App\Service\OxfordDictionary\Apis\EntriesApi;
 use App\Service\OxfordDictionary\Client\HttpClientInterface;
 
+/**
+ * @method EntriesApi entries
+ */
 class ApiFacade
 {
-
-    /**
-     * @var HttpClientInterface
-     */
     private HttpClientInterface $client;
 
     public function __construct(HttpClientInterface $client)
