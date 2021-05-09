@@ -3,10 +3,12 @@
 namespace App\Service\OxfordDictionary;
 
 use App\Service\OxfordDictionary\Apis\EntriesApi;
+use App\Service\OxfordDictionary\Apis\LemmasApi;
 use App\Service\OxfordDictionary\Client\HttpClientInterface;
 
 /**
  * @method EntriesApi entries
+ * @method LemmasApi lemmas
  */
 class ApiFacade
 {
@@ -24,7 +26,7 @@ class ApiFacade
      */
     public function __call($name, $arguments)
     {
-        $className = sprintf('App\OxfordDictionary\\Api\\%sApi', ucfirst($name));
+        $className = sprintf('App\\Service\\OxfordDictionary\\Apis\\%sApi', ucfirst($name));
 
         if (!class_exists($className)) {
             throw new \BadMethodCallException('Wrong Api');

@@ -4,6 +4,7 @@ namespace App\Service\OxfordDictionary\Apis;
 
 use App\Service\OxfordDictionary\Builders\LemmasGetResultsBuilder;
 use App\Service\OxfordDictionary\Client\HttpClientInterface;
+use App\Service\OxfordDictionary\Exceptions\ApiException;
 
 class LemmasApi
 {
@@ -19,21 +20,17 @@ class LemmasApi
     }
 
     /**
-     * @param string $word_id
-     * @param string $source_lang
+     * @param  string  $wordId
+     * @param  string  $sourceLang
      * @return array
+     * @throws ApiException
      */
-    public function get(string $word_id, string $source_lang = "en"): array
+    public function get(string $wordId, string $sourceLang): array
     {
-        $uri = sprintf(
-            '/lemmas/%s/%s',
-            $source_lang,
-            $word_id
-        );
+        $uri = "/api/v2/lemmas/$sourceLang/$wordId";
 
         $response = $this->client->get($uri);
-
-        $resultBuilder  = new LemmasGetResultsBuilder($response);
+        $resultBuilder = new LemmasGetResultsBuilder($response);
 
         return $resultBuilder->build();
     }

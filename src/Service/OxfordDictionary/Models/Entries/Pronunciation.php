@@ -6,7 +6,7 @@ use Spatie\DataTransferObject\FlexibleDataTransferObject;
 
 class Pronunciation  extends FlexibleDataTransferObject
 {
-    public string $audioFile;
+    public ?string $audioFile;
 
     public array $dialects;
 

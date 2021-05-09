@@ -1,48 +1,57 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: alexkizyma
- * Date: 4/22/21
- * Time: 12:44 PM
- */
 
 namespace App\Controller;
 
-
+use App\Service\OxfordDictionary\UseCases\GetEntryUseCase;
 use App\Service\OxfordDictionary\UseCases\GetTagCloudUseCase;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
-    public GetTagCloudUseCase $tagCloudUseCase;
+    private GetTagCloudUseCase $tagCloudUseCase;
+    private GetEntryUseCase $entryUseCase;
 
-    public function __construct(GetTagCloudUseCase $tagCloudUseCase)
+    public function __construct(GetTagCloudUseCase $tagCloudUseCase, GetEntryUseCase $entryUseCase)
     {
         $this->tagCloudUseCase = $tagCloudUseCase;
+        $this->entryUseCase = $entryUseCase;
     }
 
-    public function index()
+    /**
+     * @Route("/", name="index")
+     */
+    public function index(): Response
     {
 
         return $this->render('pages/index.html.twig');
     }
 
     /**
-     * @return Response
+     * @Route("/get-words", name="get-words")
      */
-    public function getWords()
+    public function getWords(): Response
     {
-        $words = $this->tagCloudUseCase->handler();
+        $words = $this->tagCloudUseCase->handle();
+
         $response = new Response(json_encode($words));
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
     }
 
-    public function search()
+    /**
+     * @Route("/search/", name="search")
+     */
+    public function search(Request $request): Response
     {
+        $word = $request->get('q');
+        $lang = $request->get('lang');
+
+        $data = $this->entryUseCase->handle($word, $lang);
+        dd($data);
 
         return $this->render('pages/search.html.twig');
     }
