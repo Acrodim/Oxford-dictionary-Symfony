@@ -1,8 +1,8 @@
 <?php
 
-namespace tests\OxfordDictionary;
+namespace App\Tests\OxfordDictionary;
 
-use App\Service\OxfordDictionary\Clients\HttpClientInterface;
+use App\Service\OxfordDictionary\Client\HttpClientInterface;
 use App\Service\OxfordDictionary\Exceptions\ApiException;
 use App\Service\OxfordDictionary\Models\Entries\Entry;
 use App\Service\OxfordDictionary\Models\Entries\LexicalEntry;
