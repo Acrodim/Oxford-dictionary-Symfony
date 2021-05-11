@@ -26,7 +26,6 @@ class LemmasGetResultsBuilder
      */
     public function build(): array
     {
-
         $results = [];
 
         if (key_exists('error', $this->response)) {
@@ -39,18 +38,15 @@ class LemmasGetResultsBuilder
             $entries = $pa->getValue($this->response, '[results][0][lexicalEntries]');
 
             foreach ($entries as $entry) {
-
                 $results[] = new LexicalEntry([
-
                     'id'=>$pa->getValue($this->response, '[results][0][id]'),
                     'language'=>$pa->getValue($entry, '[language]'),
                     'inflectionOf' => $pa->getValue($entry, '[inflectionOf][0][text]'),
                     'lexicalCategory' => $pa->getValue($entry, '[lexicalCategory][text]')
-
                 ]);
             }
         } catch (DataTransferObjectError $e) {
-            throw new ApiBuilderException('Wrong API response.');
+            throw new ApiBuilderException('Wrong API response. ' . $e->getMessage());
         }
 
         return $results;

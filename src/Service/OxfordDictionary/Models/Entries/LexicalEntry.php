@@ -32,15 +32,18 @@ class LexicalEntry extends FlexibleDataTransferObject
         $this->etymology = $propertyAccessor->getValue($data, '[entries][0][etymologies][0]');
         $this->lexicalCategory = $propertyAccessor->getValue($data, '[lexicalCategory][text]');
 
-        if ($pronunciations = $propertyAccessor->getValue($data, '[entries][0][pronunciations]')) {
-            foreach ($pronunciations as $pronunciation) {
-                $this->pronunciations[] = new Pronunciation($pronunciation);
-            }
+        if (!$pronunciations = $propertyAccessor->getValue($data, '[entries][0][pronunciations]')) {
+            $pronunciations = [];
+        }
+
+        foreach ($pronunciations as $pronunciation) {
+            $this->pronunciations[] = new Pronunciation($pronunciation);
         }
 
         if (!$phrases = $propertyAccessor->getValue($data, '[phrases]')) {
             $phrases = [];
         }
+
         foreach ($phrases as $phrase) {
             $this->phrases[] = $propertyAccessor->getValue($phrase, '[text]');
         }
@@ -48,6 +51,7 @@ class LexicalEntry extends FlexibleDataTransferObject
         if (!$senses = $propertyAccessor->getValue($data, '[entries][0][senses]')) {
             $senses = [];
         }
+
         foreach ($senses as $sense) {
             $this->senses[] = new Sense($sense);
 

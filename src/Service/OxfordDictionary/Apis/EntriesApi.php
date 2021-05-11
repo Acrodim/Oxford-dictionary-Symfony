@@ -20,19 +20,19 @@ class EntriesApi
     }
 
     /**
-     * @param string $source_lang
-     * @param string $word_id
+     * @param  string  $wordId
+     * @param  string  $sourceLang
      * @return array
      * @throws ApiException
      */
-    public function get(string $source_lang, string $word_id): array
+    public function get(string $wordId, string $sourceLang): array
     {
-        $uri = sprintf(
-            'entries/%s/%s?strictMatch=false',
-            $source_lang, $word_id
-        );
+        $uri = "/api/v2/entries/$sourceLang/$wordId";
 
-        return  (new EntriesResultBuilder($this->client->get($uri)))->build();
+        $response = $this->client->get($uri);
+        $resultBuilder = new EntriesResultBuilder($response);
+
+        return $resultBuilder->build();
     }
 }
 

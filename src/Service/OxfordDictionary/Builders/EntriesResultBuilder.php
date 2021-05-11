@@ -26,15 +26,18 @@ class EntriesResultBuilder
     public function build(): array
     {
         $results = [];
+
         if (!key_exists('error', $this->response)) {
             try {
                 $propertyAccessor = PropertyAccess::createPropertyAccessor();
                 $entries = $propertyAccessor->getValue($this->response, '[results]');
-                foreach ($entries as $entry){
+
+                foreach ($entries as $entry) {
                     $results[] = new Entry($entry);
                 }
+
             } catch (DataTransferObjectError $e) {
-                throw new ApiBuilderException('Wrong API response.');
+                throw new ApiBuilderException('Wrong API response. ' . $e->getMessage());
             }
         } else {
             $results = $this->response;

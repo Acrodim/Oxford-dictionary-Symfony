@@ -22,13 +22,13 @@ class GetTagCloudUseCase
     /**
      * @return array
      */
-    public function handler(): array
+    public function handle(): array
     {
         return $this->entityManager->getRepository(Searches::class)->createQueryBuilder('s')
-                ->orderBy('s.searches', 'DESC')
-                ->setMaxResults(50)
-                ->getQuery()
-                ->getArrayResult();
+            ->orderBy('s.searches', 'DESC')
+            ->setMaxResults(50)
+            ->getQuery()
+            ->getArrayResult();
     }
 }
 
