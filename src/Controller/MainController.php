@@ -51,8 +51,7 @@ class MainController extends AbstractController
         $lang = $request->get('lang');
 
         $data = $this->entryUseCase->handle($word, $lang);
-        dd($data);
 
-        return $this->render('pages/search.html.twig');
+        return $this->render('pages/search.html.twig', $data);
     }
 }
