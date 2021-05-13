@@ -18,5 +18,20 @@ class SearchesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Searches::class);
     }
+
+    public function incrementWord($word)
+    {
+        $entity = $this->findOneBy(['word' => $word]);
+        if (!$entity) {
+            $entity = new Searches();
+            $entity->setWord($word);
+        }
+        $searches = $entity->getSearches();
+        $entity->setSearches(++$searches);
+
+        $this->getEntityManager()->persist($entity);
+        $this->getEntityManager()->flush();
+    }
+
 }
 

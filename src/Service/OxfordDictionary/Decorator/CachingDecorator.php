@@ -27,15 +27,13 @@ class CachingDecorator implements HttpClientInterface
         $cache = $this->em->getRepository(Cache::class)
             ->findOneBy(['uriKey' => $uriHash]);
 
-        if ($cache) {
-            return $cache->getValue();
+        if (!$cache) {
+            $response = $this->client->get($uri);
+
+            $cache = (new Cache())->setUriKey($uriHash)->setValue($response);
+            $this->em->persist($cache);
+            $this->em->flush();
         }
-
-        $response = $this->client->get($uri);
-
-        $cache = (new Cache())->setUriKey($uriHash)->setValue($response);
-        $this->em->persist($cache);
-        $this->em->flush();
 
         return $cache->getValue();
     }
