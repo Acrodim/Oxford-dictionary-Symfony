@@ -277,7 +277,8 @@ body {
 
 .scroll-content {
   max-height: 425px;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x: hidden;
   border: 1px solid #e9ecef;
   box-shadow: 10px 5px 5px #e9ecef;
   height: 425px;
@@ -1084,6 +1085,12 @@ footer .box {
 }
 
 
+.link-footer-logo {
+  width: 100%;
+  display: block;
+  max-width: 150px;
+  margin: 10px auto 20px;
+}
 
 
 

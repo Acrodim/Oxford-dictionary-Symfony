@@ -18,9 +18,6 @@ global.$ = $;
 
 $(document).ready(function(){
 
-
-
-    // let loadingApi = $('#loading-api');
     let defaultSphareApi = $('#loading-api');
     let wordSphareApi = $('#canv');
 
@@ -55,9 +52,7 @@ $(document).ready(function(){
                         maxSpeed: 'normal',
                         initSpeed: 'fast',
 
-                        // 0 = top
-                        // 90 = left
-                        // 135 = right-bottom
+
                         direction: 135,
 
                         // interact with cursor move on mouse out
@@ -224,18 +219,14 @@ $(document).ready(function(){
                         c.width = w = window.innerWidth;
                         c.height = h = window.innerHeight;
                     }, false);
-
                     /* Not found */
 
                 }
 
             }).catch(function (error) {
                 console.log(error);
-                // alert(error);
             });
-
     }
-
 
     (function() {
         var selectors = {
@@ -263,7 +254,6 @@ $(document).ready(function(){
             $(".wave-anim").removeClass('visible');
         });
     });
-
 
     /* run sphere */
     result();

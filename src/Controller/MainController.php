@@ -26,7 +26,6 @@ class MainController extends AbstractController
      */
     public function index(): Response
     {
-
         return $this->render('pages/index.html.twig');
     }
 
@@ -36,15 +35,7 @@ class MainController extends AbstractController
     public function getWords(): Response
     {
         $words = $this->tagCloudUseCase->handle();
-//        dd($words);
         $response = new Response(json_encode($words));
-
-//        if(!empty($response)){
-//            dd(11);
-//        }else{
-//            dd(22);
-//        }
-
         $response->headers->set('Content-Type', 'application/json');
 
         return $response;
