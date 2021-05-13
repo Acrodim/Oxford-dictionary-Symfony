@@ -1,6 +1,11 @@
 {% extends 'main.html.twig' %}
 
 {% block body %}
+
+    {#if is flash message#}
+    {% include('components/flash-messages.html.twig') %}
+    {#if is flash message#}
+
     <div class="container">
 
         <form action="/search" method="get" id="translateForm" autocomplete="off">
@@ -13,9 +18,10 @@
 
                 <div class="col-md-2">
                     <label for="translateLang">Language</label>
-                    <select id="translateLang" class="form-control" name="lang">
-                        <option value="en-us" selected >En</option>
-                    </select>
+                    {#<select id="translateLang" class="form-control" name="lang">#}
+                        {#<option value="en-us" selected >En</option>#}
+                    {#</select>#}
+                    <input class="form-control" type="text" placeholder="En" readonly data-toggle="tooltip" data-placement="bottom" title="We can use only English language)">
                 </div>
 
                 <div class="col-2">
@@ -24,10 +30,14 @@
 
             </div>
         </form>
-
-        <div class="tagcloud-bl">
-            {% include('components/tag-cloud.html.twig') %}
-        </div>
-
     </div>
+
+
+
+    <div class="tagcloud-bl">
+        {% include('components/tag-cloud.html.twig') %}
+    </div>
+
+
+
 {% endblock %}

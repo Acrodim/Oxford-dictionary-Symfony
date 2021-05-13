@@ -20,6 +20,7 @@
     "dependencies": {
         "axios": "^0.21.1",
         "bootstrap": "^4.6.0",
+        "bootstrap-icons": "^1.5.0",
         "jquery": "^3.6.0",
         "TagCloud": "^2.2.0"
     }
