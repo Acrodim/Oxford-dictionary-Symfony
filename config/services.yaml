@@ -45,3 +45,4 @@ services:
         arguments:
             - '@.inner'
             - '@doctrine.orm.entity_manager'
+

@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\OxfordDictionary\Exceptions\ApiHttpClientException;
 
 class MainController extends AbstractController
 {
@@ -25,7 +26,6 @@ class MainController extends AbstractController
      */
     public function index(): Response
     {
-
         return $this->render('pages/index.html.twig');
     }
 
@@ -35,7 +35,6 @@ class MainController extends AbstractController
     public function getWords(): Response
     {
         $words = $this->tagCloudUseCase->handle();
-
         $response = new Response(json_encode($words));
         $response->headers->set('Content-Type', 'application/json');
 
@@ -48,10 +47,16 @@ class MainController extends AbstractController
     public function search(Request $request): Response
     {
         $word = $request->get('q');
-        $lang = $request->get('lang');
 
-        $data = $this->entryUseCase->handle($word, $lang);
+        try {
+            $data = $this->entryUseCase->handle($word);
+        } catch (ApiHttpClientException $e) {
+            $this->addFlash('apiNotFoundWord', 'But no such word found, try another!');
+            return $this->redirectToRoute('index');
+        }
 
-        return $this->render('pages/search.html.twig', $data);
+        return $this->render('pages/search.html.twig', [
+            'data' => $data
+        ]);
     }
 }

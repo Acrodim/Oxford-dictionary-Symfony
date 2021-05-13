@@ -1,0 +1,13 @@
+<div class="container">
+    {% for message in app.flashes('apiNotFoundWord') %}
+        <div class="alert alert-warning alert-dismissible fade show error-message" role="alert">
+            <h4 class="alert-heading">API error!</h4>
+            <p><strong>Sorry!</strong> {{ message }}</p>
+            <hr>
+            <p>If you need the help of developers, write to our support ( <a href="mailto:http://oxford-dictionary.loc">support@oxford-dictionary.loc)</a></p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endfor %}
+</div>

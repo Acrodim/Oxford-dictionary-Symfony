@@ -22,16 +22,262 @@
         </div>
         {#It`s elements for background animation#}
 
-        <div class="container search-block">
-            <h3>Search page</h3>
-            <div class="row">
-                <div class="col-md-4">
-                    <p>Block for filter</p>
+        {#{{ data[0].language is not empty ? 'yep' : 'nope' }}#}
+
+        {% if data|length > 0 %}
+        <section id="features" class="container features search-block">
+            <div class="box foo">
+                {#{{ dump(data[0]) }}#}
+                <h3>Search by word: {% if data[0].word|length > 0 %} <span>{{ data[0].word }}</span> {% else %} <span class="text-danger">Undefined</span> {% endif %}</h3>
+                <p class="language-span">Language: {% if data[0].language|length > 0 %} <span>{{ data[0].language }}</span> {% else %} <span class="text-danger">Undefined</span> {% endif %}</p>
+
+                {% if data[0].lexicalEntries|length > 0 %}
+                <div class="features-content">
+                    <div data-features-tabs class="features-content-col scroll-content">
+                        <div id="feature-1" class="features-textblock animated fadeIn __active">
+                            {% if data[0].lexicalEntries[0] is defined %}
+                                <h2 class="feature-title">LEXICAL CATEGORY: {% if data[0].lexicalEntries[0].lexicalCategory|length > 0 %}<span>{{ data[0].lexicalEntries[0].lexicalCategory }}</span>{% else %} <span class="text-danger">Undefined</span> {% endif %}</h2>
+                                <p class="sub-title-feature">Etymology</p>
+                                <p>{% if data[0].language|length > 0 %} {{ data[0].lexicalEntries[0].etymology }} {% else %} <span class="text-danger">Undefined</span> {% endif %}</p>
+                            {% else %}
+                                <span class="not-found">
+                                    <img src="{{ asset('img/notfound.gif') }}" alt="Image not found">
+                                </span>
+                            {% endif %}
+                        </div>
+                        <div id="feature-2" class="features-textblock animated fadeIn">
+                            {% if data[0].lexicalEntries[0] is defined %}
+                                <h2 class="feature-title">PRONUNCIATIONS</h2>
+
+                                {% if data[0].lexicalEntries[0].pronunciations|length > 0 %}
+                                    {% for pronunciations in data[0].lexicalEntries[0].pronunciations %}
+                                        <div class="pronunciations-bl">
+                                            <p class="sub-title-feature">Dialects: {% if pronunciations.dialects[0]|length > 0 %} American English {% else %} <span class="text-danger">Undefined</span> {% endif %}</p>
+
+                                            {% if pronunciations.audioFile is not null %}
+                                                <audio controls>
+                                                    <source src="{{ pronunciations.audioFile }}" type="audio/mpeg" />
+                                                    <a href="{{ pronunciations.audioFile }}">Audio File</a>
+                                                </audio>
+                                            {% else %}
+                                                <span class="text-danger display-block">Audio not found</span>
+                                            {% endif %}
+
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p>Phonetic Notation: {% if pronunciations.phoneticNotation|length > 0 %} <sapn>{{ pronunciations.phoneticNotation }}</sapn> {% else %} <span class="text-danger">Undefined</span> {% endif %}</p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>Phonetic Spelling: {% if pronunciations.phoneticSpelling|length > 0 %} <sapn>{{ pronunciations.phoneticSpelling }}</sapn> {% else %} <span class="text-danger">Undefined</span> {% endif %}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <span class="text-danger">Not found</span>
+                                {% endif %}
+                            {% else %}
+                                <span class="not-found">
+                                    <img src="{{ asset('img/notfound.gif') }}" alt="Image not found">
+                                </span>
+                            {% endif %}
+
+                        </div>
+                        <div id="feature-3" class="features-textblock animated fadeIn">
+                            {% if data[0].lexicalEntries[0] is defined %}
+                                <h2 class="feature-title">SENSES NOUN</h2>
+
+                                {% if data[0].lexicalEntries[0].senses|length > 0 %}
+                                    {% for senses in data[0].lexicalEntries[0].senses %}
+                                        <div class="senses-bl">
+                                            <p class="sub-bl-feature">Domain Class: {% if senses.domainClass|length > 0 %} <span>{{ senses.domainClass }}</span> {% else %} <span class="text-danger">Undefined</span> {% endif %} </p>
+                                            <p class="sub-title-feature">Definition</p>
+                                            <p>{% if senses.definition|length > 0 %} {{ senses.definition }} {% else %} <span class="text-danger">Undefined</span> {% endif %} </p>
+                                            <p class="sub-title-feature">Examples</p>
+
+                                            {% if senses.examples|length > 0 %}
+                                                <ul>
+                                                    {% for examples in senses.examples %}
+                                                        <li>{{ examples }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                <span class="text-danger">Examples not found</span>
+                                            {% endif %}
+
+                                        </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <span class="text-danger">Not found</span>
+                                {% endif %}
+                            {% else %}
+                                <span class="not-found">
+                                    <img src="{{ asset('img/notfound.gif') }}" alt="Image not found">
+                                </span>
+                            {% endif %}
+
+                        </div>
+                        <div id="feature-4" class="features-textblock animated fadeIn">
+                            {% if data[0].lexicalEntries[0] is defined %}
+                                <h2 class="feature-title">PHRASES NOUN</h2>
+                                <p class="sub-title-feature">Examples</p>
+
+                                {% if data[0].lexicalEntries[0].phrases|length > 0 %}
+                                    <ul class="ul-example">
+                                        {% for phrases in data[0].lexicalEntries[0].phrases %}
+                                            <li>{{ phrases }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    <span class="text-danger">Examples not found</span>
+                                {% endif %}
+                            {% else %}
+                                <span class="not-found">
+                                    <img src="{{ asset('img/notfound.gif') }}" alt="Image not found">
+                                </span>
+                            {% endif %}
+                        </div>
+                        <div id="feature-5" class="features-textblock animated fadeIn">
+                            {% if data[0].lexicalEntries[1] is defined %}
+                                <h2 class="feature-title">LEXICAL CATEGORY: {% if data[0].lexicalEntries[1].lexicalCategory|length > 0 %}<span>{{ data[0].lexicalEntries[1].lexicalCategory }}</span> {% else %} <span class="text-danger">Undefined</span> {% endif %}</h2>
+                                <p class="sub-title-feature">Etymology</p>
+                                <p>{% if data[0].lexicalEntries[1].etymology|length > 0 %} data[0].lexicalEntries[1].etymology {% else %} <span class="text-danger text-center display-block">Undefined</span> {% endif %}</p>
+
+                                {% if data[0].lexicalEntries[1].pronunciations|length > 0 %}
+                                    {% for pronunciations in data[0].lexicalEntries[1].pronunciations %}
+                                        <div class="pronunciations-bl text-center">
+                                            <p>Dialects: {% if pronunciations.dialects[0]|length > 0 %}American English {% else %} <span class="text-danger text-center display-block">Undefined</span> {% endif %}</p>
+                                            {% if pronunciations.audioFile is not null %}
+                                                <audio controls>
+                                                    <source src="{{ pronunciations.audioFile }}" type="audio/mpeg" />
+                                                    <a href="{{ pronunciations.audioFile }}">Audio File</a>
+                                                </audio>
+                                            {% else %}
+                                                <span class="text-danger display-block">Audio not found</span>
+                                            {% endif %}
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <p>Phonetic Notation: {% if pronunciations.phoneticNotation|length > 0 %}<sapn>{{ pronunciations.phoneticNotation }}</sapn>{% else %} <span class="text-danger text-center display-block">Undefined</span> {% endif %} </p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>Phonetic Spelling: {% if pronunciations.phoneticSpelling|length > 0 %}<sapn>{{ pronunciations.phoneticSpelling }}</sapn>{% else %} <span class="text-danger text-center display-block">Undefined</span> {% endif %}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                {% endif %}
+
+                                {#senses#}
+
+                                {% if data[0].lexicalEntries[1].senses|length > 0 %}
+                                    {% for senses in data[0].lexicalEntries[1].senses %}
+                                        <div class="senses-bl">
+                                            <p class="sub-bl-feature">Domain Class: {% if senses.domainClass is not empty %}<span>{{ senses.domainClass }}</span> {% else %} <span class="text-danger">Undefined</span> {% endif %} </p>
+                                            <p class="sub-title-feature">Definition</p>
+                                            <p>{% if senses.definition is not empty %} {{ senses.definition }} {% else %} <span class="text-danger">Undefined</span> {% endif %}</p>
+                                            <p class="sub-title-feature">Examples</p>
+                                            {% if senses.examples is not empty %}
+                                            <ul>
+                                                {% for example in senses.examples %}
+                                                    <li>{{ example }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                            {% else %}
+                                                <span class="text-danger">Examples not found</span>
+                                            {% endif %}
+                                        </div>
+                                        <hr>
+                                    {% endfor %}
+                                {% endif %}
+
+                                <div class="senses-bl">
+                                    <p class="sub-bl-feature">Domain Class: <span>Police</span> </p>
+                                    <p class="sub-title-feature">Definition</p>
+                                    <p>make an official record of the name and other personal details of (a criminal suspect or offender)</p>
+                                    <p class="sub-title-feature">Examples</p>
+                                    <ul>
+                                        <li>the cop booked me and took me down to the station</li>
+                                    </ul>
+                                </div>
+                                {#senses#}
+                            {% else %}
+                                <span class="not-found">
+                                    <img src="{{ asset('img/notfound.gif') }}" alt="Image not found">
+                                </span>
+                            {% endif %}
+                        </div>
+                        <div id="feature-6" class="features-textblock animated fadeIn">
+                            {% if data[0].lexicalEntries[1] is defined %}
+                                <h2 class="feature-title">PHRASES VERB</h2>
+                                <p class="sub-title-feature">Examples</p>
+                                {% if data[0].lexicalEntries[1].phrases|length > 0 %}
+                                    <ul class="ul-example">
+                                        {% for example in data[0].lexicalEntries[1].phrases %}
+                                            <li>{{ example }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    Examples not found
+                                {% endif %}
+                            {% else %}
+                                <span class="not-found">
+                                    <img src="{{ asset('img/notfound.gif') }}" alt="Image not found">
+                                </span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="features-content-col">
+                        <div data-features-nav class="features-graph">
+
+                            {# Nav slider top #}
+                            <div class="button-holder">
+                                <a href="#feature-1" class="icon-features-1 btn-with-icon __active">
+                                    <span class="sq-bt-label label-top-left">NOUN</span>
+                                </a>
+                                <a href="#feature-2" class="icon-features-2 btn-with-icon">
+                                    <span class="sq-bt-label label-top">PRONUNCIATIONS</span>
+                                </a>
+                                <a href="#feature-3" class="icon-features-3 btn-with-icon">
+                                    <span class="sq-bt-label label-top-right">SENSES NOUN</span>
+                                </a>
+                            </div>
+                            {# Nav slider top #}
+
+                            {# Body slider #}
+                            <div class="animation-holder">
+                                <span class="flash-oval">
+                                   <img src="{{ asset('img/logo-small.png') }}" alt="pulse">
+                                   <div class="wave hidden wave-anim"></div>
+                                   <div class="wave2 hidden wave-anim"></div>
+                                   <div class="wave3 hidden wave-anim"></div>
+                                   <div class="wave4 hidden wave-anim"></div>
+                                </span>
+                            </div>
+                            {# Body slider #}
+
+                            {# Nav slider bottom #}
+                            <div class="button-holder">
+                                <a href="#feature-4" class="icon-features-4 btn-with-icon">
+                                    <span class="sq-bt-label label-bottom-left">PHRASES NOUN</span>
+                                </a>
+                                <a href="#feature-5" class="icon-features-5 btn-with-icon">
+                                    <span class="sq-bt-label label-bottom">SENSES VERB</span>
+                                </a>
+                                <a href="#feature-6" class="icon-features-6 btn-with-icon">
+                                    <span class="sq-bt-label label-bottom-right">PHRASES VERB</span>
+                                </a>
+                            </div>
+                            {# Nav slider bottom #}
+
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-8">
-                    <p>Block for content</p>
-                </div>
+                {% endif %}
+
             </div>
-        </div>
+        </section>
+
+        {% endif %}
+
     </div>
 {% endblock %}
