@@ -24,7 +24,7 @@ class GuzzleAdapterTest extends TestCase
      */
     public function weCanMakeRequestTest($method, array $data)
     {
-        $client = new GuzzleAdapter();
+        $client = new GuzzleAdapter($baseUri='baseUri', $appId = 'appId', $appKey = 'appKey');
 
         $guzzleMock = $this->createMock(Client::class);
         $guzzleMock->expects($this->once())->method($method)->willReturnCallback(function () {
@@ -78,7 +78,7 @@ class GuzzleAdapterTest extends TestCase
      */
     public function weCanHandleException($method, array $data, $expected)
     {
-        $client = new GuzzleAdapter();
+        $client = new GuzzleAdapter($baseUri='baseUri', $appId = 'appId', $appKey = 'appKey');
 
         $guzzleMock = $this->createMock(Client::class);
         $guzzleMock->method($method)->willThrowException($this->createMock(GuzzleException::class));
